@@ -1,3 +1,7 @@
+## [2.1.0]
+- added label
+- fixed bugs
+
 ## [1.0.3]
 - rollback 1.0.2 bug
 
