@@ -96,7 +96,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
   @override
   Widget build(BuildContext context) {
     _length = widget.items.length;
-    Size size = MediaQuery.of(context).size;
+    Size size = Size(MediaQuery.of(context).size.width - (MediaQuery.of(context).padding.left + MediaQuery.of(context).padding.right), MediaQuery.of(context).size.height);
 
     return SafeArea(
       child: Material(
