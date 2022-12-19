@@ -9,3 +9,4 @@
 *.podspec linguist-detectable=false
 *.m linguist-detectable=false
 *.kt linguist-detectable=false
+*.java linguist-detectable=false
