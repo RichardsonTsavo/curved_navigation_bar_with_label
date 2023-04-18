@@ -20,11 +20,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
         index: 0,
         height: 76.0,
         items: [
-          CurvedNavigationBarItem(icon: Icon(Icons.add, size: 30), label: "Add"),
-          CurvedNavigationBarItem(icon: Icon(Icons.list, size: 30), label: "List"),
-          CurvedNavigationBarItem(icon: Icon(Icons.compare_arrows, size: 30), label: "Compare"),
-          CurvedNavigationBarItem(icon: Icon(Icons.call_split, size: 30), label: "Split"),
-          CurvedNavigationBarItem(icon: Icon(Icons.perm_identity, size: 30), label: "User"),
+          CurvedNavigationBarItem(
+              icon: Icon(Icons.add, size: 30), label: "Add"),
+          CurvedNavigationBarItem(
+              icon: Icon(Icons.list, size: 30), label: "List"),
+          CurvedNavigationBarItem(
+              icon: Icon(Icons.compare_arrows, size: 30), label: "Compare"),
+          CurvedNavigationBarItem(
+              icon: Icon(Icons.call_split, size: 30), label: "Split"),
+          CurvedNavigationBarItem(
+              icon: Icon(Icons.perm_identity, size: 30), label: "User"),
         ],
         backgroundColor: Colors.blueAccent,
         animationCurve: Curves.easeInOut,
@@ -46,7 +51,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ElevatedButton(
                 child: Text('Go To Page of index 1'),
                 onPressed: () {
-                  final CurvedNavigationBarState? navBarState = _bottomNavigationKey.currentState;
+                  final CurvedNavigationBarState? navBarState =
+                      _bottomNavigationKey.currentState;
                   navBarState?.setPage(1);
                 },
               )

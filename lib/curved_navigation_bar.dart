@@ -41,7 +41,8 @@ class CurvedNavigationBar extends StatefulWidget {
   CurvedNavigationBarState createState() => CurvedNavigationBarState();
 }
 
-class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTickerProviderStateMixin {
+class CurvedNavigationBarState extends State<CurvedNavigationBar>
+    with SingleTickerProviderStateMixin {
   late double _startingPos;
   int _endingIndex = 0;
   late double _pos;
@@ -71,7 +72,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
           _icon = widget.items[_endingIndex].icon;
           _label = widget.items[_endingIndex].label;
         }
-        _buttonHide = (1 - ((middle - _pos) / (_startingPos - middle)).abs()).abs();
+        _buttonHide =
+            (1 - ((middle - _pos) / (_startingPos - middle)).abs()).abs();
       });
     });
   }
@@ -83,7 +85,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
       final newPosition = widget.index / _length;
       _startingPos = _pos;
       _endingIndex = widget.index;
-      _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
+      _animationController.animateTo(newPosition,
+          duration: widget.animationDuration, curve: widget.animationCurve);
     }
   }
 
@@ -95,8 +98,14 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
 
   @override
   Widget build(BuildContext context) {
+    _label = widget.items[_endingIndex].label;
     _length = widget.items.length;
-    Size size = Size(MediaQuery.of(context).size.width - (MediaQuery.of(context).padding.left + MediaQuery.of(context).padding.right), MediaQuery.of(context).size.height);
+
+    Size size = Size(
+        MediaQuery.of(context).size.width -
+            (MediaQuery.of(context).padding.left +
+                MediaQuery.of(context).padding.right),
+        MediaQuery.of(context).size.height);
 
     return SafeArea(
       child: Material(
@@ -107,8 +116,12 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
           children: [
             Positioned(
               bottom: -40 - (75.0 - widget.height),
-              left: Directionality.of(context) == TextDirection.rtl ? null : _pos * size.width,
-              right: Directionality.of(context) == TextDirection.rtl ? _pos * size.width : null,
+              left: Directionality.of(context) == TextDirection.rtl
+                  ? null
+                  : _pos * size.width,
+              right: Directionality.of(context) == TextDirection.rtl
+                  ? _pos * size.width
+                  : null,
               width: size.width / _length,
               child: Center(
                 child: Transform.translate(
@@ -117,7 +130,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
                     -(1 - _buttonHide) * 80,
                   ),
                   child: Material(
-                    color: widget.buttonBackgroundColor ?? Theme.of(context).cardColor,
+                    color: widget.buttonBackgroundColor ??
+                        Theme.of(context).cardColor,
                     type: MaterialType.circle,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -139,15 +153,22 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
               ),
             ),
             Positioned(
-              left: Directionality.of(context) == TextDirection.rtl ? null : _pos * size.width,
-              right: Directionality.of(context) == TextDirection.rtl ? _pos * size.width : null,
+              left: Directionality.of(context) == TextDirection.rtl
+                  ? null
+                  : _pos * size.width,
+              right: Directionality.of(context) == TextDirection.rtl
+                  ? _pos * size.width
+                  : null,
               width: size.width / _length,
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 2),
                   child: Text(
                     _label,
-                    style: TextStyle(color: widget.buttonLabelColor ?? widget.backgroundColor, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color:
+                            widget.buttonLabelColor ?? widget.backgroundColor,
+                        fontWeight: FontWeight.bold),
                     maxLines: 1,
                   ),
                 ),
@@ -217,7 +238,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar> with SingleTic
         _startingPos = _pos;
         _endingIndex = index;
         _currentIndex = index;
-        _animationController.animateTo(newPosition, duration: widget.animationDuration, curve: widget.animationCurve);
+        _animationController.animateTo(newPosition,
+            duration: widget.animationDuration, curve: widget.animationCurve);
       });
     }
   }
@@ -260,15 +282,20 @@ class NavButton extends StatelessWidget {
         color: Colors.transparent,
         child: _currentIndex != index
             ? InkWell(
-                customBorder: const CircleBorder(), //const ContinuousRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
+                customBorder:
+                    const CircleBorder(), //const ContinuousRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                 onTap: () {
                   onTap(index);
                 },
                 child: SizedBox(
                   height: height,
                   child: Transform.translate(
-                    offset: Offset(0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
-                    child: Opacity(opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0, child: child),
+                    offset: Offset(0,
+                        difference < 1.0 / length ? verticalAlignment * 40 : 0),
+                    child: Opacity(
+                        opacity:
+                            difference < 1.0 / length * 0.99 ? opacity : 1.0,
+                        child: child),
                   ),
                 ),
               )
@@ -280,8 +307,12 @@ class NavButton extends StatelessWidget {
                 child: SizedBox(
                   height: height,
                   child: Transform.translate(
-                    offset: Offset(0, difference < 1.0 / length ? verticalAlignment * 40 : 0),
-                    child: Opacity(opacity: difference < 1.0 / length * 0.99 ? opacity : 1.0, child: child),
+                    offset: Offset(0,
+                        difference < 1.0 / length ? verticalAlignment * 40 : 0),
+                    child: Opacity(
+                        opacity:
+                            difference < 1.0 / length * 0.99 ? opacity : 1.0,
+                        child: child),
                   ),
                 ),
               ),

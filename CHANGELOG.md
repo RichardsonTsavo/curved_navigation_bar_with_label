@@ -1,3 +1,6 @@
+## 2.1.4
+- fixed bugs
+
 ## 2.1.2
 - added label
 
