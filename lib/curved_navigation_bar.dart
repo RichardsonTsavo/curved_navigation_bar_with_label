@@ -9,6 +9,7 @@ class CurvedNavigationBar extends StatefulWidget {
   final List<CurvedNavigationBarItem> items;
   final int index;
   final Color? color;
+  final TextStyle? labelStyle;
   final Color backgroundColor;
   final Color? buttonBackgroundColor;
   final Color? buttonLabelColor;
@@ -27,6 +28,7 @@ class CurvedNavigationBar extends StatefulWidget {
     this.buttonBackgroundColor,
     this.buttonLabelColor,
     this.onTap,
+    this.labelStyle,
     LetIndexPage? letIndexChange,
     this.animationCurve = Curves.easeOut,
     this.animationDuration = const Duration(milliseconds: 600),
@@ -145,7 +147,8 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
               painter: NavCustomPainter(
                 startingLoc: _pos,
                 itemsLength: _length,
-                color: Theme.of(context).scaffoldBackgroundColor,
+                color:
+                    widget.color ?? Theme.of(context).scaffoldBackgroundColor,
                 textDirection: Directionality.of(context),
               ),
               child: Container(
@@ -201,6 +204,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                                 alignment: Alignment.bottomCenter,
                                 child: Text(
                                   item.label,
+                                  style: widget.labelStyle,
                                   maxLines: 1,
                                 ),
                               ),
